@@ -11,6 +11,13 @@ class User < ApplicationRecord
     return user
   end
 
-  def self.verify_name_length()
+  def verify_name_length(user_update_params)
+    if user_update_params[:name].length >= 5
+      self.update(user_update_params)
+    end
+    return false
   end
+  private 
+
+
 end
