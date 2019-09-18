@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
+  validates :password, length: { minimum: 8 }
+  validates :name, length: {minimum: 5}, on: :update
+  validates :email, uniqueness: true, on: :create
 
   def self.return_username(email)
     email.split("@")[0]
@@ -10,14 +13,5 @@ class User < ApplicationRecord
     user.name = first_username = return_username(user_create_params[:email])
     return user
   end
-
-  def verify_name_length(user_update_params)
-    if user_update_params[:name].length >= 5
-      self.update(user_update_params)
-    end
-    return false
-  end
-  private 
-
 
 end

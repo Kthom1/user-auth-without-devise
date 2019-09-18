@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @current_user.verify_name_length(user_update_params)
+    if @current_user.update(user_update_params)
       redirect_to '/profile'
     else
       redirect_to '/profile', flash: {:errors => @current_user.errors.full_messages}
