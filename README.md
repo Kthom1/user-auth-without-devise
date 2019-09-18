@@ -1,24 +1,18 @@
-# README
+# Inc-User
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+User management without Devise.
 
-Things you may want to cover:
+## Usage
 
-* Ruby version
+After configuring your local database run
 
-* System dependencies
+```bash
+bundle i
+rails s
+```
 
-* Configuration
+To enable live reloading, in another terminal run
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+bundle exec guard
+```
