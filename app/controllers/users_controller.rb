@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: [:show, :edit]
+  before_action :authorize, only: [:show, :update]
 
   def show
     
   end
 
-  def edit
-    
+  def update
+    if @current_user.update(user_update_params)
+      redirect_to '/profile'
+    else
+      redirect_to '/profile', flash: {:errors => @current_user.errors.full_messages}
+    end
   end
 
   def new
@@ -14,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.set_first_username(user_params)
+    user = User.set_first_username(user_create_params)
     if user.save
       session[:user_id] = user.id
       redirect_to '/profile'
@@ -25,8 +29,12 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
+  def user_create_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def user_update_params
+    params.require(:user).permit(:name, :password, :password_confirmation)
   end
 
 end

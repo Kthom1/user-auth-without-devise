@@ -5,9 +5,12 @@ class User < ApplicationRecord
     email.split("@")[0]
   end
 
-  def self.set_first_username(user_params)
-    user = User.new(user_params)
-    user.name = first_username = return_username(user_params[:email])
+  def self.set_first_username(user_create_params)
+    user = User.new(user_create_params)
+    user.name = first_username = return_username(user_create_params[:email])
     return user
+  end
+
+  def self.verify_name_length()
   end
 end
