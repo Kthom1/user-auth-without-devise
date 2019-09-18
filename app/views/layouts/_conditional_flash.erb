@@ -1,0 +1,5 @@
+<% if flash[:errors] %>
+  <% flash[:errors].each do |value| %>
+    <%= content_tag :div, value, class: "flash errors" %>
+  <% end %>
+<% end %>
