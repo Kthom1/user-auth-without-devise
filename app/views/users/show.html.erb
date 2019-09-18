@@ -3,7 +3,7 @@
 <%= form_for :user, url: '/profile', method: 'patch' do |f| %>
 
   Name: <%= f.text_field :name, :value => @current_user.name  %>
-  Email: <%= f.text_field :email, :value => @current_user.email %>
+  Email: <%= f.text_field :email, :disabled => true, :value => @current_user.email %>
   Password: <%= f.password_field :password %>
   Password Confirmation: <%= f.password_field :password_confirmation %>
   <%= f.submit "Submit" %>
