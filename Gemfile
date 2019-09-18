@@ -54,6 +54,9 @@ group :development do
   gem 'guard'
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'rack-livereload'
+  # Better errors
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do
