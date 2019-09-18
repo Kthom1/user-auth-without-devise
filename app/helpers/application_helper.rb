@@ -1,4 +1,4 @@
-require 'topnav_helper.rb'
+require 'top_nav_helper.rb'
 
 module ApplicationHelper
   include TopNavHelper

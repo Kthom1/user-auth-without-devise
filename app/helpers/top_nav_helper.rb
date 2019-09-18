@@ -1,4 +1,4 @@
-module TopnavHelper
+module TopNavHelper
   def correct_nav_links_path
     if current_user 
       'layouts/signed_in'
