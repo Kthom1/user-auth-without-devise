@@ -32,6 +32,12 @@ class User < ApplicationRecord
     return self.reset_password_token
   end
 
+  def reset_password(password)
+    self.update_attribute('password', password) 
+    self.update_attribute('reset_password_token', nil)
+    self.update_attribute('reset_password_token', nil)  
+  end
+
   private
 
   def generate_token

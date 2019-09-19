@@ -19,9 +19,22 @@ class PasswordsController < ApplicationController
     @token = params[:token]
   end
 
-
   def update
-    
+    error_array = check_for_errors(params) 
+    if error_array.empty?
+      user = User.find_by(reset_password_token: params[:token])
+      user.reset_password(params[:password])
+      redirect_to login_path, flash: {:messages => ["You successfully updated your password."]}
+    else
+      redirect_to reset_url(token: params[:token]), flash: {:messages => error_array}
+    end
+  end
+
+  def check_for_errors(params)
+    error_array = []
+    if params[:password].strip.length < 8 then error_array.push("Password is too short (minimum is 8 characters)") end
+    if params[:password] != params[:password_confirmation] then error_array.push("Password confirmation doesn't match Password.") end
+    return error_array
   end
 
 end
