@@ -8,7 +8,7 @@ class PasswordsController < ApplicationController
     if params[:email].strip.empty?
       redirect_to '/forgot', flash: {:messages => ["Please enter an email address."]}
     elsif user.present?
-      puts UserMailer.reset_password_email(user)
+      UserMailer.reset_password_email(user).deliver_now
       redirect_to '/forgot', flash: {:messages => ["Nice, we'll send you an email with instructions."]}
     else
       redirect_to '/forgot',flash: {:messages => ["Can't find that email address."]}
