@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 8 }
   validates :name, length: {minimum: 5}, on: :update
   validates :email, uniqueness: true, on: :create
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
 
   def self.return_username(email)
     email.split("@")[0]
