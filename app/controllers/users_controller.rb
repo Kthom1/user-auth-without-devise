@@ -11,9 +11,9 @@ class UsersController < ApplicationController
       redirect_to '/profile'
     elsif cleaned_params.key?(:error)
       @current_user.errors.add(:password, :too_short, message: cleaned_params[:error])
-      redirect_to '/profile', flash: {:errors => @current_user.errors.full_messages}
+      redirect_to '/profile', flash: {:messages => @current_user.errors.full_messages}
     else
-      redirect_to '/profile', flash: {:errors => @current_user.errors.full_messages}
+      redirect_to '/profile', flash: {:messages => @current_user.errors.full_messages}
     end
   end
 
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       UserMailer.welcome_email(user).deliver_now
       redirect_to '/profile'
     else
-      redirect_to '/signup', flash: {:errors => user.errors.full_messages}
+      redirect_to '/signup', flash: {:messages => user.errors.full_messages}
     end
   end
 
