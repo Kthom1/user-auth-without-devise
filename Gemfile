@@ -57,6 +57,8 @@ group :development do
   # Better errors
   gem "better_errors"
   gem "binding_of_caller"
+  # Letter opener for mail during development
+  gem "letter_opener"
 end
 
 group :test do
