@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
-  get 'profile' => 'users#show'
+  get 'profile' => 'users#edit'
   patch 'profile' => 'users#update'
 
   get 'forgot' => 'passwords#new'
