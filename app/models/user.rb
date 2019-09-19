@@ -26,4 +26,16 @@ class User < ApplicationRecord
     end
   end
 
+  def generate_reset_password_token
+    self.update_attribute('reset_password_token', generate_token)
+    self.update_attribute('reset_password_sent_at', Time.now.utc)
+    return self.reset_password_token
+  end
+
+  private
+
+  def generate_token
+    SecureRandom.hex(10)
+  end
+
 end
