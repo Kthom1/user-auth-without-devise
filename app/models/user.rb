@@ -38,6 +38,10 @@ class User < ApplicationRecord
     self.update_attribute('reset_password_token', nil)  
   end
 
+  def reset_password_token_valid?
+    (self.reset_password_sent_at + 6.hours) > Time.now.utc
+  end
+
   private
 
   def generate_token
