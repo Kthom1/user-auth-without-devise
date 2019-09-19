@@ -6,8 +6,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @current_user.update(user_update_params)
+    cleaned_params = User.clean_update_params(user_update_params)
+    if cleaned_params.key?(:valid_params) && @current_user.update(cleaned_params[:valid_params])
       redirect_to '/profile'
+    elsif cleaned_params.key?(:error)
+      @current_user.errors.add(:password, :too_short, message: cleaned_params[:error])
+      redirect_to '/profile', flash: {:errors => @current_user.errors.full_messages}
     else
       redirect_to '/profile', flash: {:errors => @current_user.errors.full_messages}
     end
