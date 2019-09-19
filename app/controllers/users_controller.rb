@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     user = User.set_first_username(user_create_params)
     if user.save
       session[:user_id] = user.id
+      UserMailer.welcome_email(user).deliver_now
       redirect_to '/profile'
     else
       redirect_to '/signup', flash: {:errors => user.errors.full_messages}
@@ -40,5 +41,6 @@ class UsersController < ApplicationController
   def user_update_params
     params.require(:user).permit(:name, :password, :password_confirmation)
   end
+  
 
 end
