@@ -1,11 +1,15 @@
 <h1>Update your password</h1>
-
 <p>Please enter the new password below and then press "Update Password".</p>
-
-<%= form_tag reset_path, :method => :patch do %>
-  <%= password_field_tag :password %>
-  <%= password_field_tag :password_confirmation %>
-  <%= hidden_field_tag :token, @token %>
-
-  <%= submit_tag "Update Password" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h2 class="text-center">Enter a new password</h2>
+        <%= bootstrap_form_tag(url: reset_path, method: 'patch') do |f| %>
+        <%= f.password_field :password %>
+        <%= f.password_field :password_confirmation %>
+        <%= f.hidden_field :token, :value => @token %>
+        <%= submit_tag "Update Password" %>
+      <% end %>      
+    </div>
+  </div> 
+</div>
