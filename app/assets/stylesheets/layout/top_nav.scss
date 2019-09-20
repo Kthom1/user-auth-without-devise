@@ -1,12 +1,19 @@
-.navbar-default,
-.navbar-toggle:focus,
-.collapsed,
-button.navbar-toggle {
+.navbar-default {
   background: $navbarColor !important;
   border: none;
 
+  width: 100%;
+
   a {
+    transition: opacity 0.15s;
+    margin-right: 0;
     color: white !important;
+
+  }
+
+  a:hover,
+  a:hover {
+    opacity: 0.8;
   }
 }
 
