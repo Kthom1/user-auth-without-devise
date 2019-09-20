@@ -34,7 +34,8 @@ In the app directory run
 rails s
 ```
 
-To enable live reloading, in another terminal in the same directory run
+If you would like to try changing anything in the application, you can enable live reloading.
+In another terminal in the same directory run
 
 ```bash
 bundle exec guard
