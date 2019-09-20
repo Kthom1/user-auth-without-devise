@@ -19,7 +19,6 @@ RSpec.feature "Reset password mailer", :type => :feature do
 
   scenario 'reset password email has the correct content', js: true do
     expect(current_email).to have_content('Password Reset Instructions')
-    clear_emails
   end
 
   scenario 'user clicks reset password link in email and is successfully redirected to the reset password page', js: true do
