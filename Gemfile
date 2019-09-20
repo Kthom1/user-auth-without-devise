@@ -35,6 +35,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Figaro for environment variables
 gem 'figaro'
+# Bootstrap
+gem 'bootstrap-sass', '~> 3.3.6'
+# jQuery required for bootstrap
+gem 'jquery-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
