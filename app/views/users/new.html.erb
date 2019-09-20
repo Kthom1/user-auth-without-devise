@@ -3,12 +3,12 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <h2 class="text-center">Sign Up</h2>
-        <%= bootstrap_form_for(:user, url: '/signup') do |f| %>
-          Email: <%= f.text_field :email, :required => true %>
-          Password: <%= f.password_field :password, :required => true %>
-          Password Confirmation: <%= f.password_field :password_confirmation, :required => true %>
-          <%= f.submit "Submit" %>
-        <% end %>      
+      <%= bootstrap_form_for(:user, url: '/signup') do |f| %>
+        <%= f.text_field :email, :required => true %>
+        <%= f.password_field :password, :required => true %>
+        <%= f.password_field :password_confirmation, :required => true %>
+        <%= f.submit "Submit" %>
+      <% end %>      
     </div>
   </div> 
 </div>
