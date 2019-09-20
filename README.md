@@ -6,9 +6,9 @@ User management without Devise.
 
 ### 1. Configure your database
 
-This project uses postgresql an open source database that can be downloaded here:
+This project uses Postgresql.
 
-https://www.postgresql.org/download/
+Postgresql can be downloaded here: https://www.postgresql.org/download/
 
 From the terminal run
 
@@ -42,7 +42,9 @@ bundle exec guard
 
 ### 3. Testing
 
-This application uses Rspec for testing.
+This application uses Rspec for testing, and is designed to be tested with Google Chrome.
+
+Google Chrome can be downloaded here: https://www.google.com/chrome/
 
 To run all tests, in the project directory, run
 
