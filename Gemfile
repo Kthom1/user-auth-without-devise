@@ -77,7 +77,6 @@ group :test do
   gem 'capybara-selenium'
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_girl_rails'
-  gem 'rails-controller-testing'
   gem 'headless'
   gem 'database_cleaner'
   gem 'capybara-email'
