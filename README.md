@@ -1,4 +1,4 @@
-# Inc-User
+# User Auth Without Devise
 
 User management without Devise.
 
