@@ -1,4 +1,4 @@
-# Inc-User
+# User Auth Without Devise
 
 User management without Devise.
 
@@ -14,7 +14,7 @@ From the terminal run
 
 ```bash
 psql postgres
-create role incuser with createdb login password 'password';
+create role incubituser with createdb login password 'password';
 ```
 
 Navigate to the project directory and run

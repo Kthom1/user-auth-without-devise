@@ -18,6 +18,6 @@ RSpec.feature "Welcome new user mailer", :type => :feature do
   end
 
   scenario 'welcome new user email has the correct content', js: true do
-    expect(current_email).to have_content('You have successfully signed up with Inc!')
+    expect(current_email).to have_content('You have successfully signed up with Incubit!')
   end
 end
