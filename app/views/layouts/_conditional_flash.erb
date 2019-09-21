@@ -1,5 +1,11 @@
-<% if flash[:messages] %>
-  <% flash[:messages].each do |value| %>
-    <%= content_tag :div, value, class: "flash errors" %>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <% if flash[:messages] %>
+        <% flash[:messages].each do |value| %>
+          <%= content_tag :h1, value, class: "flash errors" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
