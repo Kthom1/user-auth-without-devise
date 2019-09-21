@@ -58,6 +58,10 @@ RSpec.configure do |config|
 
   Capybara.javascript_driver = :headless_chrome
 
+  Capybara.app_host = "http://localhost:4000"
+  Capybara.server_host = "localhost"
+  Capybara.server_port = "4000"
+
   config.include FactoryGirl::Syntax::Methods
   
   config.before(:suite) do
