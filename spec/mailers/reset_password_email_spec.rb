@@ -23,6 +23,6 @@ RSpec.feature "Reset password mailer", :type => :feature do
 
   scenario 'user clicks reset password link in email and is successfully redirected to the reset password page', js: true do
     current_email.click_link 'Reset Password!'
-    expect(page).to have_content 'Enter a new password'
+    expect(page).to have_content('Enter a new password')
   end
 end
