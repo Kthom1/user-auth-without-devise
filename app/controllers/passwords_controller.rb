@@ -8,12 +8,12 @@ class PasswordsController < ApplicationController
 
   def create
     if params[:email].strip.empty?
-      redirect_to '/forgot', flash: {:messages => ["Please enter an email address."]}
+      redirect_to '/forgot', flash: { :messages => ["Please enter an email address."] }
     elsif @user.present?
       UserMailer.reset_password_email(@user).deliver_now
-      redirect_to '/forgot', flash: {:messages => ["Nice, we'll send you an email with instructions."]}
+      redirect_to '/forgot', flash: { :messages => ["Nice, we'll send you an email with instructions."] }
     else
-      redirect_to '/forgot',flash: {:messages => ["Can't find that email address."]}
+      redirect_to '/forgot',flash: { :messages => ["Can't find that email address."] }
     end
   end
 
@@ -25,9 +25,9 @@ class PasswordsController < ApplicationController
     error_array = check_for_errors(params) 
     if error_array.empty? && @user.reset_password_token_valid?
       @user.reset_password(params[:password])
-      redirect_to login_path, flash: {:messages => ["You successfully updated your password."]}
+      redirect_to login_path, flash: { :messages => ["You successfully updated your password."] }
     else
-      redirect_to reset_url(token: params[:token]), flash: {:messages => error_array}
+      redirect_to reset_url(token: params[:token]), flash: { :messages => error_array }
     end
   end
 

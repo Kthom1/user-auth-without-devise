@@ -7,9 +7,9 @@ class UsersController < ApplicationController
 
   def update
     if @current_user.update(user_update_params)
-      redirect_to '/profile', flash: {:messages => ['Successfully updated!']}
+      redirect_to '/profile', flash: { :messages => ['Successfully updated!'] }
     else
-      redirect_to '/profile', flash: {:messages => @current_user.errors.full_messages}
+      redirect_to '/profile', flash: { :messages => @current_user.errors.full_messages }
     end
   end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       UserMailer.welcome_email(user).deliver_now
       redirect_to '/profile'
     else
-      redirect_to '/signup', flash: {:messages => user.errors.full_messages}
+      redirect_to '/signup', flash: { :messages => user.errors.full_messages }
     end
   end
 

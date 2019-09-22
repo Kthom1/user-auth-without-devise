@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/profile'
     else
-      redirect_to '/login', flash: {:messages => ["Please try again."]}
+      redirect_to '/login', flash: { :messages => ["Please try again."] }
     end
   end
 
