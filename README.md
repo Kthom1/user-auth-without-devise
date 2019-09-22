@@ -7,7 +7,6 @@ User management without Devise.
 ### 1. Configure your database
 
 This project uses Postgresql.
-
 Postgresql can be downloaded here: https://www.postgresql.org/download/
 
 From the terminal run
