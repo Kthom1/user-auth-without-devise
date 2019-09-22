@@ -44,20 +44,29 @@ rake db:schema:load
 In the app directory run
 
 ```bash
+bundle exec guard
 rails s
 ```
 
-If you would like to try changing anything in the application, you can enable live reloading.
-In another terminal in the same directory run
+Guard enables live reload, so if you would like to try changing anything in the application, that change will immediately be reflected in the browser.
+
+This application was designed to use guard by default in development, so while not running `bundle exec guard` will not prevent the application from working, there will be an error in the browser's console.
+
+If you are not interested in live reload and just want to start the application, navigate to config/environments/development.rb and comment out this line
 
 ```bash
-bundle exec guard
+config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+```
+
+You can then simply start the application with the following command in the project directory
+
+```bash
+rails s
 ```
 
 ### 3. Testing
 
 This application uses Rspec for testing and is designed to be tested with Google Chrome.
-
 Google Chrome can be downloaded here: https://www.google.com/chrome/
 
 To run all tests, in the project directory, run
