@@ -24,7 +24,7 @@ class User < ApplicationRecord
   def reset_password(password)
     self.update_attribute('password', password) 
     self.update_attribute('reset_password_token', nil)
-    self.update_attribute('reset_password_token', nil)  
+    self.update_attribute('reset_password_sent_at', nil)  
   end
 
   def reset_password_token_valid?
