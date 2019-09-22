@@ -1,7 +1,7 @@
 require "rails_helper"
 
 context 'User model validation' do
-  let(:user) { build(:user) }
+  let(:user) { create(:user) }
 
   it 'user is created successfully with proper parameters' do 
     expect(user).to be_valid
@@ -25,5 +25,10 @@ context 'User model validation' do
    it 'update is invalid because password has fewer than 8 characters' do 
     user.update(password: 'a' * 7, password_confirmation: 'a' * 7)
     expect(user).not_to be_valid
+  end
+
+  it 'second user creation is invalid because its email address is not unique' do 
+    user_two = build(:user, email: user.email)
+    expect(user_two).not_to be_valid
   end
 end
