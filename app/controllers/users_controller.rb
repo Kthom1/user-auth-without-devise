@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def update
     if @current_user.update(user_update_params)
-      redirect_to '/profile'
+      redirect_to '/profile', flash: {:messages => ['Successfully updated!']}
     else
       redirect_to '/profile', flash: {:messages => @current_user.errors.full_messages}
     end
