@@ -2,8 +2,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length: { minimum: 8 }, on: :create
   validates :password, length: { minimum: 8 }, on: :update, allow_blank: true
-  validates :name, length: { minimum: 5 }, on: :update, unless: :name_not_changed
-  validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
+  validates :name, presence: true, length: { minimum: 5, maximum: 25 }, on: :update, unless: :name_not_changed
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
   attr_readonly :email
   before_validation :set_name_to_previous_if_blank
 
