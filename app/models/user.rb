@@ -2,13 +2,10 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length: { minimum: 8 }, on: :create
   validates :password, length: { minimum: 8 }, on: :update, allow_blank: true
-  validates :name, length: { minimum: 5 }, on: :update
+  validates :name, length: { minimum: 5 }, on: :update, unless: :name_not_changed
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
   attr_readonly :email
-
-  def self.return_username(email)
-    email.split("@")[0]
-  end
+  before_validation :set_name_to_previous_if_blank
 
   def self.set_first_username(user_create_params)
     user = User.new(user_create_params)
@@ -33,6 +30,20 @@ class User < ApplicationRecord
   end
 
   private
+
+  def self.return_username(email)
+    email.split("@")[0]
+  end
+
+  def name_not_changed
+    self.name == self.name_was
+  end
+
+  def set_name_to_previous_if_blank 
+    if name.blank? 
+      self.name = self.name_was
+    end
+  end
 
   def generate_token
     SecureRandom.hex(10)
