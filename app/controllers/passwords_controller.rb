@@ -7,7 +7,7 @@ class PasswordsController < ApplicationController
   end
 
   def create
-    if params[:email].strip.empty?
+    if params[:email].blank?
       redirect_to '/forgot', flash: { :messages => ["Please enter an email address."] }
     elsif @user.present?
       UserMailer.reset_password_email(@user).deliver_now
@@ -31,14 +31,14 @@ class PasswordsController < ApplicationController
     end
   end
 
+  private
+
   def check_for_errors(params)
     error_array = []
-    if params[:password].strip.length < 8 then error_array.push("Password is too short (minimum is 8 characters)") end
+    if params[:password].to_s.strip.length < 8 then error_array.push("Password is too short (minimum is 8 characters)") end
     if params[:password] != params[:password_confirmation] then error_array.push("Password confirmation doesn't match Password.") end
     return error_array
   end
-
-  private
 
   def find_user_by_reset_password_token
     @user = User.find_by(reset_password_token: params[:token])
