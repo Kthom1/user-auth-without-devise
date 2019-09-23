@@ -1,3 +1,5 @@
+require './lib/constraints/auth_constraint'
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -14,6 +16,10 @@ Rails.application.routes.draw do
   post 'forgot' => 'passwords#create'
   get 'reset' => 'passwords#edit'
   patch 'reset' => 'passwords#update'
+
+  constraints(Constraints::AuthConstraint.new) do
+    root to: 'users#edit'
+  end
 
   root to: 'users#new' 
 end
