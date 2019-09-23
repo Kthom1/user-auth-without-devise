@@ -6,10 +6,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    puts 
     if user_update_params[:name].blank? && user_update_params[:password].blank?
       redirect_to '/profile', flash: { :messages => ['Enter a new name or password to update your account'] }
-    elsif @current_user.update(user_update_params)
+    elsif @current_user.present? && @current_user.update(user_update_params)
       redirect_to '/profile', flash: { :messages => ['Successfully updated!'] }
     else
       redirect_to '/profile', flash: { :messages => @current_user.errors.full_messages }

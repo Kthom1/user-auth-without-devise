@@ -23,7 +23,7 @@ class PasswordsController < ApplicationController
 
   def update
     error_array = check_for_errors(params) 
-    if error_array.empty? && @user.reset_password_token_valid?
+    if error_array.empty? && @user.present? && @user.reset_password_token_valid?
       @user.reset_password(params[:password])
       redirect_to login_path, flash: { :messages => ["You successfully updated your password."] }
     else
@@ -47,5 +47,4 @@ class PasswordsController < ApplicationController
   def find_user_by_email
     @user = User.find_by(email: params[:email])
   end
-
 end
