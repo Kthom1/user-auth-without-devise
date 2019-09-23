@@ -20,7 +20,17 @@ RSpec.feature "Reset password", :type => :feature do
       fill_in 'Password confirmation', with: '12345678'
     end
     click_on 'Update Password'
-    expect(page).to have_content('You successfully updated your password.')
+    expect(page).to have_content('You successfully updated your password')
+  end
+
+  scenario 'user fails to reset password because token is no longer valid (older than 6 hours)', js: true do
+    user.update(reset_password_sent_at: Time.now.utc - 7.hours)
+    within('form') do
+      fill_in 'Password', with: '12345678'
+      fill_in 'Password confirmation', with: '12345678'
+    end
+    click_on 'Update Password'
+    expect(page).to have_content('This token is no longer valid')
   end
 
   scenario 'user fails to reset password because password is too short', js: true do

@@ -25,7 +25,10 @@ class PasswordsController < ApplicationController
     error_array = check_for_errors(params) 
     if error_array.empty? && @user.present? && @user.reset_password_token_valid?
       @user.reset_password(params[:password])
-      redirect_to login_path, flash: { :messages => ["You successfully updated your password."] }
+      redirect_to login_path, flash: { :messages => ["You successfully updated your password"] }
+    elsif @user.present? && !@user.reset_password_token_valid?
+      error_array.push("This token is no longer valid")
+      redirect_to reset_url(token: params[:token]), flash: { :messages => error_array }
     else
       redirect_to reset_url(token: params[:token]), flash: { :messages => error_array }
     end
