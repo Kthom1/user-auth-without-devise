@@ -44,6 +44,11 @@ In the app directory run
 
 ```bash
 bundle exec guard
+```
+
+In a separate terminal, in the app directory, run
+
+```bash
 rails s
 ```
 
