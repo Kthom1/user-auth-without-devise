@@ -86,9 +86,3 @@ All tests can be found in the project's spec folder. To run tests separately, ru
 ```bash
 rspec spec/path_to/example_spec.rb
 ```
-
-## Closing
-
-If you have any questions, please don't hesitate to ask. Have a nice day.
-
-keenan.thompson67@gmail.com
