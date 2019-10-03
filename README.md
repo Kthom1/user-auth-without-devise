@@ -1,6 +1,8 @@
 # User Auth Without Devise
 
-User management without Devise.
+## What is this?
+
+ This is an example of basic user management -- account creation, sessions, welcome user email, reset password email -- in Ruby on Rails without using Devise.
 
 ## Usage
 
