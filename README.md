@@ -1,5 +1,7 @@
 # User Auth Without Devise
 
+![User Auth Test](user-auth-test.gif)
+
 ## What is this?
 
  This is an example of basic user management -- account creation, sessions, welcome user email, reset password email -- in Ruby on Rails without using Devise.
