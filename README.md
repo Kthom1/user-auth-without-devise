@@ -47,7 +47,6 @@ rake db:schema:load
 In the app directory run
 
 ```bash
-bundle exec guard init
 bundle exec guard
 ```
 
