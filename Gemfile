@@ -36,7 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Figaro for environment variables
 gem 'figaro'
 # Bootstrap
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 # jQuery required for bootstrap
 gem 'jquery-rails'
 # Bootstrap form
